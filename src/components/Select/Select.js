@@ -1,18 +1,46 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import { COLORS } from '../../constants';
-import Icon from '../Icon';
-import { getDisplayedValue } from './Select.helpers';
+import { COLORS } from "../../constants";
+import Icon from "../Icon";
+import { getDisplayedValue } from "./Select.helpers";
 
 const Select = ({ label, value, onChange, children }) => {
   const displayedValue = getDisplayedValue(value, children);
 
   return (
-    <select value={value} onChange={onChange}>
-      {children}
-    </select>
+    <SelectWrapper>
+      <SelectEl value={value} onChange={onChange}>
+        {children}
+      </SelectEl>
+      <StyledIcon id="chevron-down" />
+    </SelectWrapper>
   );
 };
+
+const SelectWrapper = styled.div`
+  position: relative;
+`;
+
+const SelectEl = styled.select`
+  appearance: none;
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: ${COLORS.transparentGray15};
+  color: ${COLORS.gray700};
+  padding: 12px 16px;
+  border-radius: 8px;
+
+  &:hover {
+    color: ${COLORS.black};
+  }
+`;
+
+const StyledIcon = styled(Icon)`
+  position: absolute;
+  top: 8px;
+  right: 12px;
+`;
 
 export default Select;
