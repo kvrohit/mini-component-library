@@ -39,8 +39,15 @@ const SelectEl = styled.select`
 
 const StyledIcon = styled(Icon)`
   position: absolute;
-  top: 8px;
   right: 12px;
+  pointer-events: none;
+
+  /* Centering trick without flexbox */
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 24px;
+  height: 24px;
 `;
 
 export default Select;
